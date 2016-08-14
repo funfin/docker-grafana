@@ -1,5 +1,7 @@
 FROM debian:jessie
 
+MAINTAINER OiSiS (https://github.com/oisis)
+
 RUN apt-get update && apt-get -y install apt-transport-https curl python-pip
 
 RUN echo "deb https://packagecloud.io/grafana/stable/debian/ wheezy main" >> /etc/apt/sources.list && \
