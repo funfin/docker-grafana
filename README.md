@@ -89,6 +89,14 @@ docker run \
 You may also specify multiple profiles to `GF_AWS_PROFILES` (e.g.
 `GF_AWS_PROFILES=default another`).
 
+## Setup InfluxDB data source:
+
+```
+docker run -d -p 3000:3000 -e GRAFANA_DATASOURCES="influxdb" \
+  -e INFLUXDB_HOST=influxdb -e INFLUXDB_USER=root -e INFLUXDB_PASS=toor \
+  -e INFLUXDB_ACCESS=direct -e INFLUXDB_GRAFANA_DB=collectd oisis/grafana
+```
+
 ## Supported variables:
 
 - `GRAFANA_BIN`: Grafana binary file location
