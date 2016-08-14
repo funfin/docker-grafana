@@ -17,19 +17,10 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64 > /u
 
 # Configure Grafana
 RUN mkdir -p /etc/grafana/datasources
-COPY configs/influxdb.js.tpl /etc/grafana/datasources/influxdb.js.tpl
-COPY configs/opentsdb.js.tpl /etc/grafana/datasources/opentsdb.js.tpl
-COPY configs/graphite.js.tpl /etc/grafana/datasources/graphite.js.tpl
-COPY configs/elasticsearch.js.tpl /etc/grafana/datasources/elasticsearch.js.tpl
-COPY scripts/configure.sh /configure.sh
-COPY scripts/plugins.sh /plugins.sh
-COPY scripts/aws.sh /aws.sh
-COPY scripts/run.sh /run.sh
+COPY configs/ /etc/grafana/datasources/
+COPY scripts/ /
 
-RUN chmod +x /configure.sh \
-  && chmod +x /run.sh \
-  && chmod +x /aws.sh \
-  && chmod +x /plugins.sh
+RUN chmod +x /*.sh
 
 ENV GRAFANA_BIN /bin/grafana-server
 ENV GRAFANA_USER admin
