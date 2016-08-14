@@ -1,0 +1,23 @@
+version: '2'
+services:
+  grafana:
+    build: docker-grafana/
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GRAFANA_DATASOURCES=influxdb,opentsb
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,grafana-clock-panel,bosun-app
+      - GRAFANA_USER=admin
+      - GRAFANA_PASS=admin
+      - OPENTSDB_HOST=opentsdb
+      - OPENTSDB_PORT=4242
+      - OPENTSDB_ACCESS=direct
+      - OPENTSDB_RESOLUTION=second
+      - INFLUXDB_HOST=influxdb
+      - INFLUXDB_USER=root
+      - INFLUXDB_PASS=toor
+      - INFLUXDB_ACCESS=direct
+      - INFLUXDB_GRAFANA_DB=collectd
+    expose:
+      - '3000'
