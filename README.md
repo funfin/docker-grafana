@@ -1,14 +1,14 @@
-# Grafana Docker image
+## Grafana Docker image
 
 This project builds a Docker image with the latest master build of Grafana(3.1.X).
 
-## Build image
+### Build image
 
 ```
 docker build -t grafana .
 ```
 
-## Running your Grafana container
+### Running your Grafana container
 
 Start your container binding the external port `3000`.
 
@@ -18,7 +18,7 @@ docker run -d --name=grafana -p 3000:3000 oisis/grafana
 
 Try it out, default admin user is admin/admin.
 
-## Configuring your Grafana container
+### Configuring your Grafana container
 
 All options defined in conf/grafana.ini can be overriden using environment
 variables, for example:
@@ -33,7 +33,7 @@ docker run \
   oisis/grafana
 ```
 
-## Grafana container with persistent storage (recommended)
+### Grafana container with persistent storage (recommended)
 
 ```
 # create /var/lib/grafana as persistent volume storage
@@ -48,7 +48,7 @@ docker run \
   oisis/grafana
 ```
 
-## Installing plugins for Grafana 3
+### Installing plugins for Grafana 3
 
 Pass the plugins you want installed to docker with the `GF_INSTALL_PLUGINS` environment variable as a comma seperated list. This will pass each plugin name to `grafana-cli plugins install ${plugin}`.
 
@@ -61,7 +61,7 @@ docker run \
   oisis/grafana
 ```
 
-## Running specific version of Grafana
+### Running specific version of Grafana
 
 ```
 # specify right tag, e.g. 2.6.0 - see Docker Hub for available tags
@@ -72,7 +72,7 @@ docker run \
   oisis/grafana:2.6.0
 ```
 
-## Configuring AWS credentials for CloudWatch support
+### Configuring AWS credentials for CloudWatch support
 
 ```
 docker run \
@@ -89,7 +89,7 @@ docker run \
 You may also specify multiple profiles to `GF_AWS_PROFILES` (e.g.
 `GF_AWS_PROFILES=default another`).
 
-## Setup InfluxDB data source:
+### Setup InfluxDB data source:
 
 ```
 docker run -d -p 3000:3000 -e GRAFANA_DATASOURCES="influxdb" \
@@ -97,7 +97,7 @@ docker run -d -p 3000:3000 -e GRAFANA_DATASOURCES="influxdb" \
   -e INFLUXDB_ACCESS=direct -e INFLUXDB_GRAFANA_DB=collectd oisis/grafana
 ```
 
-## Supported variables:
+### Supported variables:
 
 - `GRAFANA_BIN`: Grafana binary file location
 - `GRAFANA_DATASOURCES`: Grafana data sources to add(default none), supported: elasticsearch, graphite, influsdb, opentsdb
