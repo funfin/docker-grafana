@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-GRAFANA_USER="admin"
-GRAFANA_PASS="admin"
-
 if [ ! -z ${GRAFANA_DATASOURCES} ]; then
   IFS=','
   for datasource in ${GRAFANA_DATASOURCES}; do

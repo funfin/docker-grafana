@@ -13,6 +13,7 @@ chown -R grafana:grafana /etc/grafana
 
 /aws.sh
 /plugins.sh
+/setup_grafana.sh
 
 wait_for_start_of_grafana(){
   #wait for the startup of grafana
